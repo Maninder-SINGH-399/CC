@@ -1,0 +1,47 @@
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int a;
+
+    cout << "Enter the size of array: ";
+    cin >> a;
+
+    vector<int> nums(a);
+
+    cout << "Enter the elements of array: ";
+    for(int i = 0; i < a; i++)
+    {
+        cin >> nums[i];
+    }
+
+    vector<int> answer(a);
+
+    for(int i = 0; i < a; i++)
+    {
+        int product = 1;
+
+        for(int j = 0; j < a; j++)
+        {
+            if(i != j)
+            {
+                product = product * nums[j];
+            }
+        }
+
+        answer[i] = product;
+    }
+
+    cout << "Product Except Self Array: ";
+    for(int i = 0; i < a; i++)
+    {
+        cout << answer[i] << " ";
+    }
+
+    cout << endl;
+
+    return 0;
+}
