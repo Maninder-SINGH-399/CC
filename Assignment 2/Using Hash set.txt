@@ -1,0 +1,38 @@
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+struct Node {
+    int x;
+    Node *next;
+};
+
+bool cycle(Node *p) {
+    unordered_set<Node*> s;
+
+    while (p != NULL) {
+        if (s.count(p))
+            return true;
+
+        s.insert(p);
+        p = p->next;
+    }
+    return false;
+}
+
+int main() {
+    Node a, b, c;
+
+    a.x = 1; b.x = 2; c.x = 3;
+
+    a.next = &b;
+    b.next = &c;
+    c.next = &b;   
+
+    if (cycle(&a))
+        cout << "True";
+    else
+        cout << "False";
+
+    return 0;
+}

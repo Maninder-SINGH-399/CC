@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n, k, x;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int a[n];
+    cout << "Enter sorted array: ";
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    cout << "Enter rotation index: ";
+    cin >> k;
+    cout << "Enter target element: ";
+    cin >> x;
+    k = k % n;
+    int b[n];
+    for (int i = 0; i < n; i++)
+        b[i] = a[(i + k) % n];
+    cout << "Rotated Array: ";
+    for (int i = 0; i < n; i++)
+        cout << b[i] << " ";
+    int pos = -1;
+    for (int i = 0; i < n; i++) {
+        if (b[i] == x) {
+            pos = i;
+            break;
+        }
+    }
+    if (pos != -1)
+        cout << "\nTarget found at index: " << pos;
+    else
+        cout << "\nTarget not found.";
+    return 0;
+}
